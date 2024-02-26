@@ -22,15 +22,15 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   });
   const { errors } = formState;
 
-  const { mutate: editCabin, isLoading: isEditing } = useMutation({
-    mutationFn: ({ newCabinData, id }) => createEditCabin,
-    onSuccess: () => {
-      toast.success("Cabin  is updated!"),
-        queryClient.invalidateQueries({ queryKey: ["cabins"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  // const { mutate: editCabin, isLoading: isEditing } = useMutation({
+  //   mutationFn: ({ newCabinData, id }) => createEditCabin,
+  //   onSuccess: () => {
+  //     toast.success("Cabin  is updated!"),
+  //       queryClient.invalidateQueries({ queryKey: ["cabins"] });
+  //     reset();
+  //   },
+  //   onError: (err) => toast.error(err.message),
+  // });
 
   function onSubmit(data) {
     console.log(data);
