@@ -84,7 +84,7 @@ export default function CabinRow({ cabin }) {
           <Discount>{formatCurrency(discount)}</Discount>
         ) : (
           <span>&mdash;</span>
-        )}{" "}
+        )}
         <div>
           <button disabled={isCreating} onClick={handleDuplicate}>
             <HiSquare2Stack />
