@@ -1,5 +1,7 @@
 import BookingDetail from "../features/bookings/BookingDetail";
 
-export default function Booking() {
+function Booking() {
   return <BookingDetail />;
 }
+
+export default Booking;

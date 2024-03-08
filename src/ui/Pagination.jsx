@@ -77,19 +77,17 @@ export default function Pagination({ count }) {
     searchParams.set("page", prev);
     setSearchParams(searchParams);
   }
-  if (pageCount < 5) return null;
+  if (pageCount <= 1) return null;
 
   return (
-    <>
-      <StyledPagination>
-        <P>
-          Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to
-          <span>
-            {currentPage === pageCount ? count : currentPage * PAGE_SIZE}{" "}
-          </span>{" "}
-          of <span>23</span> results
-        </P>
-      </StyledPagination>
+    <StyledPagination>
+      <P>
+        Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to
+        <span>
+          {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+        </span>{" "}
+        of <span>23</span> results
+      </P>
 
       <Buttons>
         <PaginationButton onClick={prevPage}>
@@ -100,6 +98,6 @@ export default function Pagination({ count }) {
           <HiChevronRight />
         </PaginationButton>
       </Buttons>
-    </>
+    </StyledPagination>
   );
 }
