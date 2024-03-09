@@ -14,6 +14,7 @@ import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare } from "react-icons/hi2";
 import Empty from "../../ui/Empty";
+import { useCheckout } from "../check-in-out/useCheckout";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -23,6 +24,8 @@ const HeadingGroup = styled.div`
 
 function BookingDetail() {
   const { booking, isLoading } = useBooking();
+  const { checkout, isCheckinOut } = useCheckout();
+
   const moveBack = useMoveBack();
   const navigate = useNavigate();
 
@@ -56,15 +59,15 @@ function BookingDetail() {
           </Button>
         )}
 
-        {/* {status === "checked-in" && (
+        {status === "checked-in" && (
           <Button
             icon={<HiArrowUpOnSquare />}
             onClick={() => checkout(bookingId)}
-            disabled={isCheckingOut}
+            disabled={isCheckinOut}
           >
             Check out
           </Button>
-        )} */}
+        )}
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
