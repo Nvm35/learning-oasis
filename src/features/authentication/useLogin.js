@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useMutation } from "@tanstack/react-query";
 import { login as loginApi } from "../../services/apiAuth";
 import { useNavigate } from "react-router-dom";
