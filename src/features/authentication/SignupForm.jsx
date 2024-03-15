@@ -13,8 +13,14 @@ function SignupForm() {
   const { errors } = formState;
 
   function onSubmit({ fullName, email, password }) {
-    signup({ fullName, email, password }, { onSettled: () => reset() });
+    signup(
+      { fullName, email, password },
+      {
+        onSettled: () => reset(),
+      }
+    );
   }
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Full name" error={errors?.fullName?.message}>
@@ -33,7 +39,10 @@ function SignupForm() {
           disabled={isLoading}
           {...register("email", {
             required: "This field is required",
-            pattern: { value: /\S+@\S+\.\S+/, message: "Provide valid email" },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Please provide a valid email address",
+            },
           })}
         />
       </FormRow>
@@ -48,7 +57,10 @@ function SignupForm() {
           disabled={isLoading}
           {...register("password", {
             required: "This field is required",
-            minLength: { value: 8, message: "Need at least 8" },
+            minLength: {
+              value: 8,
+              message: "Password needs a minimum of 8 characters",
+            },
           })}
         />
       </FormRow>
@@ -61,17 +73,22 @@ function SignupForm() {
           {...register("passwordConfirm", {
             required: "This field is required",
             validate: (value) =>
-              value === getValues().password || "Password need to match",
+              value === getValues().password || "Passwords need to match",
           })}
         />
       </FormRow>
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          disabled={isLoading}
+          onClick={reset}
+        >
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button disabled={isLoading}>Create new user</Button>
       </FormRow>
     </Form>
   );
